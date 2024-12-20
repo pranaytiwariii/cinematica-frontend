@@ -1,4 +1,4 @@
-import { Film, Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const navigation = {
@@ -42,9 +42,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <Film className="w-8 h-8 text-purple-500" />
-              <span className="text-2xl font-bold">CinematicaIndia</span>
+            <div className="flex items-center w-80 space-x-2 mb-4">
+             <img src="/logo_white.png" alt="" />
             </div>
             <p className="text-gray-400 mb-4 max-w-md">
               India's premier platform for booking creative spaces. From photography studios to event venues,

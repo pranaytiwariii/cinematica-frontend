@@ -63,7 +63,7 @@ export default function AnimatedTestimonials() {
   };
 
   return (
-    <div className="bg-white py-24 sm:py-32">
+    <div className="bg-white pt-5 py-24 sm:py-32 sm:pt-10">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-xl text-center">
           <h2 className="text-lg font-semibold leading-8 tracking-tight text-purple-600">Testimonials</h2>

@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import { Film, Menu, User } from 'lucide-react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/auth.context.tsx'; // Ensure this path is correct
-import AuthModal from './AuthModal';
-import SearchBar from './SearchBar';
+import { useState, useEffect } from "react";
+import { Menu, User } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/auth.context.tsx"; // Ensure this path is correct
+import AuthModal from "./AuthModal";
+import SearchBar from "./SearchBar";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -11,7 +11,7 @@ export default function Navbar() {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const isHomePage = location.pathname === '/';
+  const isHomePage = location.pathname === "/";
   const { isAuthenticated, user, logout } = useAuth();
 
   useEffect(() => {
@@ -20,33 +20,43 @@ export default function Navbar() {
       setIsScrolled(window.scrollY > (isHomePage ? heroHeight - 80 : 0));
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [isHomePage]);
 
   const handleProfileClick = () => {
-    console.log('User:', user);
+    console.log("User:", user);
     if (user) {
-      console.log('User profile:', user);
-      navigate('/profile', { state: { user } });
+      console.log("User profile:", user);
+      navigate("/profile", { state: { user } });
     }
   };
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || !isHomePage ? 'bg-white shadow-md' : 'bg-transparent'
-      }`}>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled || !isHomePage ? "bg-white shadow-md" : "bg-transparent"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <Link to="/" className="flex items-center space-x-2">
-              <Film className={`w-8 h-8 transition-colors duration-300 ${
-                isScrolled || !isHomePage ? 'text-purple-600' : 'text-white'
-              }`} />
-              <span className={`text-xl font-bold transition-colors duration-300 ${
-                isScrolled || !isHomePage ? 'text-gray-900' : 'text-white'
-              }`}>CinematicaIndia</span>
+              <img
+                src={
+                  isScrolled || !isHomePage
+                    ? "/logo_Black.png"
+                    : "/logo_white.png"
+                }
+                alt="Logo"
+                className="h-16 w-36 transition-all duration-300"
+              />
+              {/* <span
+                className={`text-xl font-bold transition-colors duration-300 ${
+                  isScrolled || !isHomePage ? "text-gray-900" : "text-white"
+                }`}
+              ></span> */}
             </Link>
 
             {(isScrolled || !isHomePage) && (
@@ -56,28 +66,28 @@ export default function Navbar() {
             )}
 
             <div className="flex items-center space-x-4">
-              <Link 
+              <Link
                 to="/"
                 className={`hidden md:flex items-center px-4 py-2 rounded-full transition-all duration-300 ${
                   isScrolled || !isHomePage
-                    ? 'border border-gray-300 hover:shadow-md'
-                    : 'text-white hover:bg-white/10'
+                    ? "border border-gray-300 hover:shadow-md"
+                    : "text-white hover:bg-white/10"
                 }`}
               >
                 <span className="text-sm font-medium">Find your space</span>
               </Link>
 
               <div className="flex items-center space-x-4">
-              <Link 
-                to="/host"
-                className={`hidden md:flex items-center px-4 py-2 rounded-full transition-all duration-300 ${
-                  isScrolled || !isHomePage
-                    ? 'border border-gray-300 hover:shadow-md'
-                    : 'text-white hover:bg-white/10'
-                }`}
-              >
-                <span className="text-sm font-medium">Host your space</span>
-              </Link>
+                <Link
+                  to="/host"
+                  className={`hidden md:flex items-center px-4 py-2 rounded-full transition-all duration-300 ${
+                    isScrolled || !isHomePage
+                      ? "border border-gray-300 hover:shadow-md"
+                      : "text-white hover:bg-white/10"
+                  }`}
+                >
+                  <span className="text-sm font-medium">Host your space</span>
+                </Link>
               </div>
 
               {isAuthenticated ? (
@@ -86,8 +96,8 @@ export default function Navbar() {
                     onClick={handleProfileClick}
                     className={`hidden md:flex items-center px-4 py-2 rounded-full transition-all duration-300 ${
                       isScrolled || !isHomePage
-                        ? 'border border-gray-300 hover:shadow-md'
-                        : 'text-white hover:bg-white/10'
+                        ? "border border-gray-300 hover:shadow-md"
+                        : "text-white hover:bg-white/10"
                     }`}
                   >
                     <span className="text-sm font-medium">Profile</span>
@@ -96,8 +106,8 @@ export default function Navbar() {
                     onClick={logout}
                     className={`hidden md:flex items-center px-4 py-2 rounded-full transition-all duration-300 ${
                       isScrolled || !isHomePage
-                        ? 'border border-gray-300 hover:shadow-md'
-                        : 'text-white hover:bg-white/10'
+                        ? "border border-gray-300 hover:shadow-md"
+                        : "text-white hover:bg-white/10"
                     }`}
                   >
                     <span className="text-sm font-medium">Logout</span>
@@ -108,21 +118,21 @@ export default function Navbar() {
                   onClick={() => setIsAuthModalOpen(true)}
                   className={`hidden md:flex items-center px-4 py-2 rounded-full transition-all duration-300 ${
                     isScrolled || !isHomePage
-                      ? 'border border-gray-300 hover:shadow-md'
-                      : 'text-white hover:bg-white/10'
+                      ? "border border-gray-300 hover:shadow-md"
+                      : "text-white hover:bg-white/10"
                   }`}
                 >
                   <span className="text-sm font-medium">Sign In</span>
                 </button>
               )}
-              
+
               <div className="relative">
                 <button
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
                   className={`flex items-center space-x-2 p-2 rounded-full cursor-pointer transition-all duration-300 ${
                     isScrolled || !isHomePage
-                      ? 'border border-gray-300 hover:shadow-md'
-                      : 'text-white hover:bg-white/10'
+                      ? "border border-gray-300 hover:shadow-md"
+                      : "text-white hover:bg-white/10"
                   }`}
                 >
                   <Menu className="w-5 h-5" />

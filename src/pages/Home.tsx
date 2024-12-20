@@ -5,6 +5,7 @@ import LocationFinder from '../components/LocationFinder';
 import HostTimeline from '../components/HostTimeline';
 import LocationCollage from '../components/LocationCollage';
 import AnimatedTestimonials from '../components/AnimatedTestimonials';
+import Analytics from '../components/Analytics';
 
 export default function Home() {
   return (
@@ -34,6 +35,7 @@ export default function Home() {
 
         {/* Host Timeline */}
         <HostTimeline />
+        <Analytics />
       </div>
 
       {/* Testimonials Section */}
